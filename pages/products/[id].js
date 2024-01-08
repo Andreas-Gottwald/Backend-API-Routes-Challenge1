@@ -14,8 +14,12 @@ function Product() {
     return <h1>Loading</h1>;
   }
   if (!data) {
-    return;
+    return null;
   }
+
+  const nextId = parseInt(id, 10) + 1;
+  const lastId = parseInt(id, 10) - 1;
+
   return (
     <>
       <small>ID: {id}</small>
@@ -26,7 +30,9 @@ function Product() {
         {data.currency}
       </p>
       <p>{data.category}</p>
-      <Link href="/products">Back to all</Link>
+      <Link href="/products">Back to all</Link>{" "}
+      <Link href={`/products/${nextId}`}>Next Fish</Link>{" "}
+      <Link href={`/products/${lastId}`}>Last Fish</Link>{" "}
     </>
   );
 }
